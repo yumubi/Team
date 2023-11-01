@@ -1,0 +1,85 @@
+app:
+  path:${user.home}${file.separator}.api${file.separator}
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8090
+  http2:
+    enabled: true
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+    basedir: ${spring.application.name}${file.separator}log${file.separator}tomcat${file.separator}
+    accesslog:
+      enabled: true
+      pattern: "%t %a %r %s (%D ms)"
+
+
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ciallo
+    password: 7143cda8e174b66b
+    url: jdbc:mysql://mysql.sqlpub.com:3306/imghosting?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: SELECT 1
+
+#  data:
+#    # redis 配置
+#    redis:
+#      # 地址
+#      host: 47.113.230.6
+#      # 端口，默认为6379
+#      port: 6379
+#      # 数据库索引
+#      database: 0
+#      # 密码
+#      password: Ciallo
+#      # 连接超时时间
+#      timeout: 10s
+#      lettuce:
+#        pool:
+#          # 连接池中的最小空闲连接
+#          min-idle: 0
+#          # 连接池中的最大空闲连接
+#          max-idle: 8
+#          # 连接池的最大数据库连接数
+#          max-active: 8
+#          # #连接池最大阻塞等待时间（使用负值表示没有限制）
+#          max-wait: -1ms
+
+
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: io.goji.team.**.entity
+  global-config:
+    banner: off
+    db-config:
+      id-type: auto
+      logic-delete-field: isDeleted # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: true # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: false # 逻辑未删除值(默认为 0)
+
+logging:
+  charset:
+    file: utf-8
+    console: utf-8
+  config: classpath:logback-spring.xml
