@@ -41,6 +41,8 @@ dependencies {
 // https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils
     implementation("eu.bitwalker:UserAgentUtils:1.21")
 
+// https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation("commons-io:commons-io:2.13.0")
 
     // https://mvnrepository.com/artifact/org.lionsoul/ip2region
     implementation("org.lionsoul:ip2region:2.7.0")

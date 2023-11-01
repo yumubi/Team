@@ -28,7 +28,6 @@ public class JwtInterceptor implements HandlerInterceptor {
         }
         String token = request.getHeader("token");
         if(StringUtils.isNotEmpty(token)) {
-            log.info("token is {}", token);
             try {
                 Claims claims = JwtUtils.getToken(token);
                 String userid = claims.get("id").toString();

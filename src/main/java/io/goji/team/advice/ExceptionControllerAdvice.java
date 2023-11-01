@@ -39,7 +39,7 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler
     public Result<?> handleServiceException(ApiException e) {
-        log.error(e.getMessage(), e.getPayload());
+        log.error(e.getMessage(), e.getPayload(), getExceptionJsonMessage());
         return Result.failed(e.getErrorCode(), e.getMsg())   ;
     }
 

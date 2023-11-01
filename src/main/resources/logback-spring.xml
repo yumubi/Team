@@ -11,7 +11,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
   <!-- 用来定义变量值的标签，<property> 有两个属性，name和value；其中name的值是变量的名称，value的值时变量定义的值。通过<property>定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 -->
-  <property name="APP_Name" value="api"/>
+  <property name="APP_Name" value="Team"/>
 
   <!-- key: 标识此timestamp的名字; datePattern: 设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循java.txt.SimpleDateFormat的格式。 -->
   <timestamp key="bySecond" datePattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ"/>
@@ -33,7 +33,7 @@
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 
     <!-- 日志文件的路径及文件名 -->
-    <File>D:/logs/${APP_Name}.log</File>
+    <File>logs/log/${APP_Name}.log</File>
 
     <!-- 如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true -->
     <append>true</append>

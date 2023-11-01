@@ -24,23 +24,23 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     private final JwtInterceptor jwtInterceptor;
 
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtInterceptor)
-            .addPathPatterns("/**")
-            .excludePathPatterns(
-                "/v3/**",
-                "/api-docs/**",
-                "/swagger-ui.html/**",
-                "/swagger-ui/**",
-                "/doc.html/**",
-                "/error",
-                "/favicon.ico",
-                "/actuator/**",
-                "/api-docs.yaml"
-            );
-    }
+//
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(jwtInterceptor)
+//            .addPathPatterns("/**")
+//            .excludePathPatterns(
+//                "/v3/**",
+//                "/api-docs/**",
+//                "/swagger-ui.html/**",
+//                "/swagger-ui/**",
+//                "/doc.html/**",
+//                "/error",
+//                "/favicon.ico",
+//                "/actuator/**",
+//                "/api-docs.yaml"
+//            );
+//    }
 
 
     @Override

@@ -21,7 +21,7 @@ server:
       max: 800
       # Tomcat启动初始化的线程数，默认值10
       min-spare: 100
-    basedir: ${spring.application.name}${file.separator}log${file.separator}tomcat${file.separator}
+    basedir: logs/tomcat${file.separator}
     accesslog:
       enabled: true
       pattern: "%t %a %r %s (%D ms)"
