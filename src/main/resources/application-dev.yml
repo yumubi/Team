@@ -1,5 +1,7 @@
 app:
-  path:${user.home}${file.separator}.api${file.separator}
+  path: ${user.home}${file.separator}.api${file.separator}
+  jwt_secretKey: HIUDe9%^#&dsf4%#4tr115&*&*wer6grfvewfw
+  jwt_expireTime: 2
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为8080
@@ -27,8 +29,8 @@ server:
 
 
 spring:
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ciallo
