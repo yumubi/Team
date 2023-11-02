@@ -1,4 +1,5 @@
 app:
+  file_dir: ${user.home}${file.separator}.files${file.separator}
   path: ${user.home}${file.separator}.api${file.separator}
   jwt_secretKey: HIUDe9%^#&dsf4%#4tr115&*&*wer6grfvewfw
   jwt_expireTime: 2

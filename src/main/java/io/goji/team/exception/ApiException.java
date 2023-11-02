@@ -33,6 +33,11 @@ public class ApiException extends RuntimeException {
         super(MessageFormat.format("traceId: {0}\n{1}", MDC.get("traceId")), cause);
     }
 
+    public ApiException(ResultCode errorCode, String msg) {
+
+        this.errorCode = errorCode;
+        this.msg = StrUtil.format(errorCode.getMsg());
+    }
 
     public ApiException(Throwable e, ResultCode errorCode, Object... args) {
         super(e);

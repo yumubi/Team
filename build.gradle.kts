@@ -49,8 +49,22 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.lionsoul/ip2region
     implementation("org.lionsoul:ip2region:2.7.0")
-    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas
-    implementation("org.apache.poi:poi-ooxml-schemas:4.1.2")
+
+//// https://mvnrepository.com/artifact/org.apache.poi/poi
+//    implementation("org.apache.poi:poi:4.1.2")
+//    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas
+//    implementation("org.apache.poi:poi-ooxml-schemas:4.1.2")
+//
+
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    implementation("org.apache.poi:poi-ooxml:5.2.4")
+
+
+//    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-lite
+//    implementation("org.apache.poi:poi-ooxml-lite:5.2.4")
+
+
+
     // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
 // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
