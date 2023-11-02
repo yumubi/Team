@@ -86,6 +86,8 @@ logging:
     file: utf-8
     console: utf-8
   config: classpath:logback-spring.xml
+#  level:
+#    root: debug
 management:
   endpoints:
     web:

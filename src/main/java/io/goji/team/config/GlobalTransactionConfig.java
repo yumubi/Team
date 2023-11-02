@@ -32,7 +32,7 @@ public class GlobalTransactionConfig {
      * href="https://blog.csdn.net/ycf921244819/article/details/106599489">https://blog.csdn.net/ycf921244819/article/details/106599489</a>）
      * 本项目设置在 applicationService层
      */
-    private static final String POINTCUT_EXPRESSION = "execution(public * io.goji.team.controller.*.*(..))";
+    private static final String POINTCUT_EXPRESSION = "execution(public * io.goji.team.service..*.*(..))";
 
 
     /**

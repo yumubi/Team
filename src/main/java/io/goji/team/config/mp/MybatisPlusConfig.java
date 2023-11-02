@@ -33,8 +33,6 @@ public class MybatisPlusConfig {
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         //大拦截器
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        //分页插件
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         //乐观锁插件
         interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
         //攻击 SQL 阻断解析器,防止全表更新与删除

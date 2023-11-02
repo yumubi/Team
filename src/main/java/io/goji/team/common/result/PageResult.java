@@ -7,9 +7,6 @@ import lombok.Data;
 
 /**
  * 分页响应结构体
- *
- * @author haoxr
- * @date 2022/2/18 23:29
  */
 @Data
 public class PageResult<T> implements Serializable {
@@ -24,7 +21,7 @@ public class PageResult<T> implements Serializable {
         PageResult<T> result = new PageResult<>();
         result.setCode(ResultCode.SUCCESS.getCode());
 
-        Data data = new Data<T>();
+        Data<T> data = new Data<T>();
         data.setList(page.getRecords());
         data.setTotal(page.getTotal());
 
