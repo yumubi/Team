@@ -2,10 +2,11 @@ package io.goji.team;
 
 
 import io.goji.team.annotation.ExcelColumn;
+import io.goji.team.annotation.ExcelSheet;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-
+@ExcelSheet(name = "测试sheet")
 public class PostDTO {
 
 

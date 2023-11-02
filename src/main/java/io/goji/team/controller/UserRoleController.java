@@ -10,6 +10,8 @@ import io.goji.team.common.result.Result;
 import io.goji.team.pojo.entity.UserRole;
 import io.goji.team.service.UserRoleService;
 import io.goji.team.service.impl.UserRoleServiceImpl;
+import io.goji.team.utils.CustomExcelUtil;
+import io.goji.team.utils.FileUploadUtils;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,18 +78,10 @@ public class UserRoleController {
     public void exportRole(HttpServletRequest request, HttpServletResponse response) {
         List<Map<String, Object>> list = CollectionUtil.newArrayList();
         List<UserRole> userRoles = userRoleAll();
-        for (UserRole role: userRoles) {
-            Map<String, Object> row = new LinkedHashMap<>();
-            row.put("唯一表示符", role.getId());
-            row.put("角色编号", role.getRoleId());
-            row.put("角色名称", role.getRolename());
-            row.put("角色描述", role.getDescription());
-            list.add(row);
-        }
+//        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
+//        HttpHeaders downloadHeader = FileUploadUtils.getDownloadHeader("用户角色表");
+        CustomExcelUtil.writeToResponse(userRoles, UserRole.class, response);
 
-        ExcelWriter writer = ExcelUtil.getWriter(true);
-        writer.write(list, true);
-        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
 
     }
 

@@ -9,6 +9,8 @@ import io.goji.team.common.result.ResultCode;
 import io.goji.team.exception.ApiException;
 //import io.goji.team.security.TrimXssEditor;
 import jakarta.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
@@ -30,6 +32,9 @@ public class CustomExcelUtil {
 
     public static <T> void writeToResponse(List<T> list, Class<T> clazz, HttpServletResponse response) {
         try {
+            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
+            String fileName = URLEncoder.encode(clazz.getName(), StandardCharsets.UTF_8);
+            response.setHeader("Content-Disposition", "attachment;filename=" + fileName + ".xlsx");
             writeToOutputStream(list, clazz, response.getOutputStream());
         } catch (IOException e) {
             throw new ApiException(e, ResultCode.SYSTEM_EXECUTION_ERROR, e.getMessage());
