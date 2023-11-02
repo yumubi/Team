@@ -25,6 +25,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     // https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
     implementation("org.apache.commons:commons-pool2:2.11.1")

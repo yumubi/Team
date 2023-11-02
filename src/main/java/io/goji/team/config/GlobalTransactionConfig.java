@@ -3,6 +3,8 @@ package io.goji.team.config;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -21,7 +23,8 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
  */
 @Configuration
 @RequiredArgsConstructor
-
+@Slf4j
+@Aspect
 public class GlobalTransactionConfig {
 
     /**
@@ -29,7 +32,7 @@ public class GlobalTransactionConfig {
      * href="https://blog.csdn.net/ycf921244819/article/details/106599489">https://blog.csdn.net/ycf921244819/article/details/106599489</a>）
      * 本项目设置在 applicationService层
      */
-    private static final String POINTCUT_EXPRESSION = "execution(public * com.agileboot.domain..*.*ApplicationService.*(..))";
+    private static final String POINTCUT_EXPRESSION = "execution(public * io.goji.team.controller.*.*(..))";
 
 
     /**
@@ -39,11 +42,10 @@ public class GlobalTransactionConfig {
 
     /**
      * 配置事务拦截器
-     *
-     * @return TransactionInterceptor
      */
     @Bean
     public TransactionInterceptor txAdvice() {
+
         RuleBasedTransactionAttribute txAttrRequired = new RuleBasedTransactionAttribute();
         txAttrRequired.setName("REQUIRED事务");
 
@@ -66,6 +68,13 @@ public class GlobalTransactionConfig {
         // 事务管理规则，声明具备事务管理的方法名
         NameMatchTransactionAttributeSource source = new NameMatchTransactionAttributeSource();
         // 方法名规则限制，必须以下列开头才会加入事务管理当中
+
+//        source.addTransactionalMethod("userRoleSave", txAttrRequired);
+//        source.addTransactionalMethod("userRoleDelete", txAttrRequired);
+//        source.addTransactionalMethod("userRoleBatchDelete", txAttrRequired);
+//        source.addTransactionalMethod("useRoleAll", txAttrRequiredReadOnly);
+
+
         // 新增
         source.addTransactionalMethod("add*", txAttrRequired);
         source.addTransactionalMethod("save*", txAttrRequired);
@@ -101,6 +110,7 @@ public class GlobalTransactionConfig {
      */
     @Bean
     public Advisor txAdviceAdvisor() {
+        log.info("===============================创建txAdviceAdvisor===================================");
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(POINTCUT_EXPRESSION);
         return new DefaultPointcutAdvisor(pointcut, txAdvice());

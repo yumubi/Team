@@ -45,9 +45,9 @@ public class UserRoleController {
         }else{
             return Result.failed();
         }
+
     }
 
-    // TODO: 1/11/2023  事务管理
     @PostMapping("/batch/del")
     public Result<Void> userRoleBatchDelete(@RequestBody List<Integer> ids) {
         if(userRoleService.removeBatchByIds(ids)) {
